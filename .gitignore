@@ -1,0 +1,8 @@
+__pycach__/
+*.venv
+venv/
+db.sqlite3
+db.sqlite3_journal
+.env
+*.py[cod]
+.vscode/
