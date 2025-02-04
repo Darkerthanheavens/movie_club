@@ -18,6 +18,7 @@ class Movies(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     rating = models.IntegerField(max_length=1, choices=Ratings, default=Ratings.AMAZING)
     comment = models.TextField(blank=True)
+    image = models.ImageField(upload_to='movie_posters/')
 
     def __str__(self):
         return self.title
@@ -28,6 +29,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    like = models.IntegerField(default=0)
 
     def __str__(self):
         return f"comment by {self.user.username} on {self.post.title}: {self.content[0:25]}"
